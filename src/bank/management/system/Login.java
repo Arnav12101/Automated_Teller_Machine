@@ -1,4 +1,5 @@
 package ASimulatorSystem;
+import bank.management.system.SignupOne;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -85,7 +86,8 @@ public class Login extends JFrame implements ActionListener{
         }
         else if(ae.getSource() == signup)
         {
-
+            setVisible(false);
+            new SignupOne().setVisible(true);
         }
     }
     
