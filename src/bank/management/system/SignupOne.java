@@ -1,21 +1,26 @@
 package bank.management.system;
+
 import com.toedter.calendar.*;
-import java.io.Console;
-
 import javax.swing.*;
-
 import java.awt.*;
 import java.util.*;
+import java.awt.event.*;
 
-public class SignupOne extends JFrame{
+public class SignupOne extends JFrame implements ActionListener{
 
-    SignupOne()//constructor
+    
+    Long random;
+    JTextField nameTextField, fnameTextField , emailTextField, addressTextField, cityTextField, pinTextField, stateTextField;
+    JButton next;
+    JRadioButton female, male, married, unmarried, other; 
+    JDateChooser dateChooser;
+    public SignupOne()//constructor
     {
 
         setLayout(null);
 
         Random ran = new Random();//CREATING AN OBJECT OF THE RANDOM CLASS, THIS RANDOM CLASS WILL BE USED TO GENERATE 4 DIGIT NUMBER
-        long random = (Math.abs(ran.nextLong() % 9000L) + 1000L);
+        random = (Math.abs(ran.nextLong() % 9000L) + 1000L);
         
         
         JLabel formno = new JLabel("APPLICATION FORM NO." + random);//HEADING OF THE PAGE
@@ -33,7 +38,7 @@ public class SignupOne extends JFrame{
         name.setBounds(100, 140, 100, 30);
         add(name);
 
-            JTextField nameTextField = new JTextField();
+            nameTextField = new JTextField();
             nameTextField.setFont(new Font("Raleway", Font.BOLD, 14));
             nameTextField.setBounds(300, 140, 400, 30);
             add(nameTextField);
@@ -43,7 +48,7 @@ public class SignupOne extends JFrame{
         fname.setBounds(100, 190, 200, 30);
         add(fname);
 
-            JTextField fnameTextField = new JTextField();
+            fnameTextField = new JTextField();
             fnameTextField.setFont(new Font("Raleway", Font.BOLD, 14));
             fnameTextField.setBounds(300, 190, 400, 30);
             add(fnameTextField);
@@ -55,7 +60,7 @@ public class SignupOne extends JFrame{
         add(dob);
 
 
-            JDateChooser dateChooser = new JDateChooser();//DOWNLOADED A CALENDER JAR FILE WHICH IS LATER IMPORTED USING THE PACKAGE
+            dateChooser = new JDateChooser();//DOWNLOADED A CALENDER JAR FILE WHICH IS LATER IMPORTED USING THE PACKAGE
             dateChooser.setBounds(300,240,400,30);
             dateChooser.setForeground(new Color(105,105,105));
             add(dateChooser);
@@ -66,12 +71,12 @@ public class SignupOne extends JFrame{
         add(gender);
 
         
-            JRadioButton male = new JRadioButton("Male");
+            male = new JRadioButton("Male");
             male.setBackground(Color.white);
             male.setBounds(300,290,60,30);
             add(male);
         
-            JRadioButton female = new JRadioButton("Female");
+            female = new JRadioButton("Female");
             female.setBackground(Color.white);
             female.setBounds(450,290,100,30);
             add(female);
@@ -87,7 +92,7 @@ public class SignupOne extends JFrame{
         add(email);
 
 
-            JTextField emailTextField = new JTextField();
+             emailTextField = new JTextField();
             emailTextField.setFont(new Font("Raleway", Font.BOLD, 14));
             emailTextField.setBounds(300, 340, 400, 30);
             add(emailTextField);
@@ -97,17 +102,17 @@ public class SignupOne extends JFrame{
         marital.setBounds(100, 390  , 200, 30);
         add(marital);
         
-            JRadioButton married = new JRadioButton("Married");
+            married = new JRadioButton("Married");
             married.setBackground(Color.white);
             married.setBounds(300,390,120,30);
             add(married);
         
-            JRadioButton unmarried = new JRadioButton("Unmarried");
+            unmarried = new JRadioButton("Unmarried");
             unmarried.setBackground(Color.white);
             unmarried.setBounds(450,390,120,30);
             add(unmarried);
 
-            JRadioButton other = new JRadioButton("Other");
+            other = new JRadioButton("Other");
             other.setBackground(Color.white);
             other.setBounds(600,390,120,30);
             add(other);
@@ -124,7 +129,7 @@ public class SignupOne extends JFrame{
         add(address);
 
 
-            JTextField addressTextField = new JTextField();
+             addressTextField = new JTextField();
             addressTextField.setFont(new Font("Raleway", Font.BOLD, 14));
             addressTextField.setBounds(300, 440, 400, 30);
             add(addressTextField);
@@ -134,7 +139,7 @@ public class SignupOne extends JFrame{
         city.setBounds(100, 490  , 200, 30);
         add(city);
 
-            JTextField cityTextField = new JTextField();
+             cityTextField = new JTextField();
             cityTextField.setFont(new Font("Raleway", Font.BOLD, 14));
             cityTextField.setBounds(300, 490, 400, 30);
             add(cityTextField);
@@ -145,7 +150,7 @@ public class SignupOne extends JFrame{
         add(state);
 
 
-            JTextField stateTextField = new JTextField();
+             stateTextField = new JTextField();
             stateTextField.setFont(new Font("Raleway", Font.BOLD, 14));
             stateTextField.setBounds(300, 540, 400, 30);
             add(stateTextField);
@@ -155,17 +160,18 @@ public class SignupOne extends JFrame{
         pincode.setBounds(100, 590,200,30);
         add(pincode);
 
-            JTextField pinTextField = new JTextField();
+             pinTextField = new JTextField();
             pinTextField.setFont(new Font("Raleway", Font.BOLD, 14));
             pinTextField.setBounds(300, 590, 400, 30);
             add(pinTextField);
             
             
-        JButton next = new JButton("Next");
+        next = new JButton("Next");
         next.setBackground(Color.BLACK);
         next.setForeground(Color.white);
         next.setFont(new Font("Raleway", Font.BOLD, 14));
         next.setBounds(620, 660, 80,30);
+        next.addActionListener(this);
         add(next);
         // next.getActionListeners()
 
@@ -175,6 +181,90 @@ public class SignupOne extends JFrame{
         setLocation(350,10);
         setVisible(true);
     }
+    
+    public void actionPerformed(ActionEvent ae)
+    {
+        String formno = " "+random;//ITS A LONG VALUE, THAT HAS TO BE CONVERTED INTO A STRING
+        String name = nameTextField.getText();
+        String fname = fnameTextField.getText();
+        String dob = ((JTextField)dateChooser.getDateEditor().getUiComponent()).getText();
+        String gender = null;
+        if(male.isSelected())
+        {
+            gender = "male";
+        }
+        else if(female.isSelected())
+        {
+            gender = "female";
+        }
+        
+        String email = emailTextField.getText();
+        String marital = null;
+        if(married.isSelected())
+        {
+             marital = "Married";
+        }
+        else if(unmarried.isSelected())
+        {
+            marital = "Unmarried";
+        }
+        else if(other.isSelected())
+        {
+            marital = "Other";
+        }
+        
+        String address = addressTextField.getText(); 
+        String city = cityTextField.getText();
+        String pin = pinTextField.getText();
+        String state = stateTextField.getText();
+        
+        
+        try{
+            if(name.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Name is required");
+            }
+            else if(fname.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Father's name is required");
+            }
+            else if(dob.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Date of birth is required");
+            }
+            else if(email.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Email is required");
+            }
+            else if(address.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "Address is required");
+            }
+            else if(city.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "City is required");
+            }
+            else if(pin.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "PIN is required");
+            }
+            else if(state.equals(""))
+            {
+                JOptionPane.showMessageDialog(null, "State is required");
+            }
+            else
+            {
+                Conn c = new Conn();//CREATING AN OBJECT OF THE CONN CLASS
+                String query = "insert into signup values ('"+formno+"', '"+name+"', '"+fname+"', '"+dob+"', '"+gender+"', '"+email+"', '"+marital+"', '"+address+"', '"+city+"', '"+pin+"', '"+state+"')";
+                c.s.executeUpdate(query);
+            }
+        } catch(Exception e)
+        {
+            System.out.println(e);
+        }
+    }
+    
+//    "String'"+variable+"'String"
     public static void main(String args[])
     {
         new SignupOne();//CREATING AN OBJECT OF THE SIGNUP CLASS
