@@ -1,3 +1,5 @@
+DATE: 22/04/22
+--------------------------------------
 create database bankmanagementsystem;
 
 show databases;
@@ -44,3 +46,37 @@ state varchar(25)
 )
 
 select * from signup;
+----------------------------
+
+
+DATE: 23/04/22
+
+1.
+create table signup
+(
+formno varchar(20),
+name varchar(50),
+father_name varchar(50),
+dob varchar(10),
+gender varchar(20),
+email varchar(20),
+marital_status varchar(20),
+address varchar(40),
+city varchar(20),
+pincode varchar(20),
+state varchar(25)
+)
+
+2.
+create table Signuptwo
+(
+	formno varchar(20),
+    religion varchar(20),
+    catagory varchar(20),
+    income varchar(50),
+    education varchar(20),
+    occupation varchar(20),
+    pan varchar(30),
+    aadhar varchar(30)
+);
+
