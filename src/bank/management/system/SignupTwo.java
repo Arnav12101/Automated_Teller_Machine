@@ -1,3 +1,4 @@
+
 package bank.management.system;
 
 import com.toedter.calendar.*;
@@ -153,6 +154,9 @@ public class SignupTwo extends JFrame implements ActionListener{
                 Conn c = new Conn();//CREATING AN OBJECT OF THE CONN CLASS
                 String query = "insert into Signuptwo values ('"+formno+"', '"+sreligion+"', '"+scatagory+"', '"+sincome+"', '"+seducation+"', '"+soccupation+"', '"+span+"', '"+saadhar+"')";
                 c.s.executeUpdate(query);
+                
+                setVisible(false);
+                new SignupThree(formno).setVisible(true);
         }
         //SIGNUP3 Object
         catch(Exception e)
