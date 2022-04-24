@@ -1,8 +1,11 @@
-package ASimulatorSystem;
+package bank.management.system;
+import bank.management.system.Conn;
 import bank.management.system.SignupOne;
+import bank.management.system.Transactions;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import java.sql.*;
 public class Login extends JFrame implements ActionListener{
     JButton login, signup, clear;//MAKING THESE FIELDS GLOBAL
     JTextField cardTextField;//MAKING THESE FIELDS GLOBAL
@@ -11,13 +14,7 @@ public class Login extends JFrame implements ActionListener{
     {
         setTitle("AUTOMATED TELLER MACHINE");//THIS WILL SET THE NAME AT THE TOP LEFT CORNER 
         setLayout(null);//THIS WILL ALLOW US TO PUT CUSTOM BOUNDS
-        // ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("ASimulatorSystem/icons/logo.jpg"));
-        // Image i2 = i1.getImage().getScaledInstance(100, 100, Image.SCALE_DEFAULT);
-        // ImageIcon i3 = new ImageIcon();
-        // JLabel label = new JLabel(i3);
-        // label.setBounds(70,10,100,100);
-        // add(label);//TO SOMETHING ON THE FRAME
-
+        
         JLabel text = new JLabel("WELCOME TO ATM");
         text.setFont(new Font("Osward", Font.BOLD, 38));
         text.setBounds(200,40,400,40);
@@ -82,7 +79,27 @@ public class Login extends JFrame implements ActionListener{
         }
         else if(ae.getSource() == login)
         {
-
+            Conn conn = new Conn();
+            String cardnumber = cardTextField.getText();
+            String pinnumber = pinTextField.getText();
+            String query = "select * from login where cardnumber = '"+cardnumber+"' and pin = '"+pinnumber+"'";
+            try
+            {
+                ResultSet rs = conn.s.executeQuery(query);
+                if(rs.next())
+                {
+                    setVisible(false);
+                    new Transactions().setVisible(true);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(null, "Incorrect Credentials");
+                }
+            }
+            catch(Exception e)
+            {
+                System.out.println(e);
+            }
         }
         else if(ae.getSource() == signup)
         {
