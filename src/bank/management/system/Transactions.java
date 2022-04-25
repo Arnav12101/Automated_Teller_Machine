@@ -5,9 +5,10 @@ import java.awt.event.*;
 public class Transactions extends JFrame implements ActionListener{
     
     JButton deposit, withdrawl, ministatement, pinchange, fastcash, balanceenquiry, exit;//MAKING ALL THE BUTTON VARIABLES AS GLOBAL
-    public Transactions()//CONSTRUCTOR
+    String pinnumber;
+    public Transactions(String pinnumber)//CONSTRUCTOR
     {
-
+        this.pinnumber = pinnumber;
         setLayout(null);
 
         ImageIcon i1 = new ImageIcon(ClassLoader.getSystemResource("icons/atm.jpg"));
@@ -81,10 +82,16 @@ public class Transactions extends JFrame implements ActionListener{
         {
             System.exit(0);
         }
+        else if(ae.getSource() == deposit)
+        {
+            setVisible(false);
+            new Deposit(pinnumber).setVisible(true);
+            
+        }
     }
     
     public static void main(String args[])
     {
-        new Transactions();
+        new Transactions("s");
     }
 }
