@@ -80,3 +80,150 @@ create table Signuptwo
     aadhar varchar(30)
 );
 
+
+
+----------------------------------
+
+Date: 25/04/2022
+
+create database bankmanagementsystem;
+
+show databases;
+
+use bankmanagementsystem;
+
+create table signup
+(
+formno varchar(20),
+name varchar(50),
+father_name varchar(50),
+dob varchar(10),
+gender varchar(20),
+email varchar(20),
+marital_status varchar(20),
+address varchar(40),
+city varchar(20),
+pincode varchar(20),
+state varchar(25)
+)
+
+show tables;
+
+select * from signup;
+desc signup;
+
+select * from signup;
+
+drop table signup;
+
+create table signup
+(
+formno varchar(20),
+name varchar(50),
+father_name varchar(50),
+dob varchar(30),
+gender varchar(20),
+email varchar(50),
+marital_status varchar(20),
+address varchar(40),
+city varchar(20),
+pincode varchar(20),
+state varchar(25)
+)
+
+select * from signup;
+
+use bankmanagementsystem;
+select * from signup;
+
+
+use bankmanagementsystem;
+
+create table Signuptwo
+(
+	formno varchar(20) PRIMARY KEY,
+    religion varchar(20),
+    catagory varchar(20),
+    income varchar(50),
+    education varchar(20),
+    occupation varchar(20),
+    pan varchar(30),
+    aadhar varchar(30)
+);
+select * from signup;
+
+
+drop table Signuptwo;
+
+
+
+create table signup
+(
+formno varchar(20),
+name varchar(50),
+father_name varchar(50),
+dob varchar(30),
+gender varchar(20),
+email varchar(50),
+marital_status varchar(20),
+address varchar(40),
+city varchar(20),
+pincode varchar(20),
+state varchar(25)
+)
+
+
+drop table signuptwo;
+
+show tables;
+
+create table Signuptwo
+(
+	formno varchar(20),
+    religion varchar(20),
+    catagory varchar(20),
+    income varchar(50),
+    education varchar(20),
+    occupation varchar(20),
+    pan varchar(30),
+    aadhar varchar(30)
+);
+
+select * from Signuptwo;
+use bankmanagementsystem;
+
+
+create table Signupthree
+(
+formno varchar(20),
+AccountType varchar(40),
+cardnumber varchar(30),
+pin varchar(10),
+facility varchar(100)
+);
+
+select * from Signupthree;
+
+create table login
+(
+formno varchar(20),
+cardnumber varchar(25),
+pin varchar(25)
+);
+
+use bankmanagementsystem;
+
+select * from login;
+
+create table bank
+(
+pin varchar(10),
+date varchar(90),
+type varchar(30),
+amount varchar(20)
+);
+
+select * from bank;
+
+
+
