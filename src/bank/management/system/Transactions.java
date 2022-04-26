@@ -45,11 +45,11 @@ public class Transactions extends JFrame implements ActionListener{
         fastcash.addActionListener(this);
         image.add(fastcash);
         
-        ministatement = new JButton("Mini Statement");
-        ministatement.setBounds(355, 450,150,30);
-        ministatement.setBackground(Color.WHITE);
-        ministatement.addActionListener(this);
-        image.add(ministatement);
+//        ministatement = new JButton("Mini Statement");
+//        ministatement.setBounds(355, 450,150,30);
+//        ministatement.setBackground(Color.WHITE);
+//        ministatement.addActionListener(this);
+//        image.add(ministatement);
         
         pinchange = new JButton("Pin Change");
         pinchange.setBounds(170,485,150,30);
@@ -58,7 +58,7 @@ public class Transactions extends JFrame implements ActionListener{
         image.add(pinchange);
         
         balanceenquiry = new JButton("Balance Enquiry");
-        balanceenquiry.setBounds(355, 485,150,30);
+        balanceenquiry.setBounds(355, 450,150,30);
         balanceenquiry.setBackground(Color.WHITE);
         balanceenquiry.addActionListener(this);
         image.add(balanceenquiry);
